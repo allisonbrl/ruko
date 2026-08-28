@@ -148,6 +148,15 @@ flutter build appbundle --release
 flutter build ios --release
 ```
 
+### 🤖 Build Android APK no navegador (GitHub Actions)
+
+1. Abra o repositório no GitHub
+2. Vá em **Actions** → **Android APK Build**
+3. Clique em **Run workflow**
+4. Aguarde o job finalizar com sucesso
+5. Abra a execução e baixe o artifact **`ruko-android-apk`**
+6. O arquivo baixado será o `app-release.apk`
+
 ## 🤝 Contributing {#contributing}
 
 ### 🎯 Areas We Need Help With
