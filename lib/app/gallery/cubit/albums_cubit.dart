@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:photo_manager/photo_manager.dart';
+import 'package:ruko/app/permission/gallery_permission.dart';
 import 'package:ruko/app/gallery/utils/filter_options.dart';
 import 'package:ruko/app/gallery/utils/get_deletable_assets.dart';
 import 'package:ruko/core/enums/status.dart';
@@ -15,12 +16,7 @@ class AlbumsCubit extends Cubit<AlbumsState> {
   AlbumsCubit() : super(const AlbumsState());
 
   Future<bool> hasRestrictedPermission() async {
-    final permissionState = await PhotoManager.getPermissionState(
-      requestOption: const PermissionRequestOption(
-        iosAccessLevel: IosAccessLevel.readWrite,
-      ),
-    );
-    return !permissionState.hasAccess;
+    return !(await hasGalleryAccess());
   }
 
   Future<void> loadAlbums() async {

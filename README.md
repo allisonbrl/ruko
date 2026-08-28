@@ -62,6 +62,41 @@ Ruko helps you clean your camera roll. Inspired by the familiar swipe mechanics 
 
 ---
 
+## 🤖 Android Port Plan & Scope
+
+### MVP parity for first Android release (required)
+- Swipe left/right cleanup flow for photos and videos
+- Category-based cleanup modes (albums, month, location, screenshots, videos, shuffle, oldest-first)
+- Delete + undo flow
+- Fullscreen asset preview
+- Share actions (Instagram story + system share)
+- Permission onboarding and routing (Splash → Permission Request → Home)
+
+### Post-MVP / future releases
+- Android-specific UX optimizations for very large libraries
+- Additional deletion safety UX for non-deletable/managed assets
+- Expanded device and OS matrix hardening
+
+### iOS-coupled points already identified
+- Native method channel `photo_utils` (`isDeletable`) currently implemented on iOS and now mirrored on Android
+- iOS-only permission assumptions replaced in startup/onboarding flows with `photo_manager` permission checks
+- Platform config alignment tracked in Android manifest/build setup
+
+### Android validation checklist
+- Verify album loading and pagination on medium and large libraries
+- Verify swipe keep/delete behavior and undo consistency
+- Verify category filters and video playback
+- Verify denied/limited permission flows and recovery from app settings
+- Run static analysis and Android build before release
+
+### Android beta release checklist
+- Finalize signing configuration for Android release builds
+- Validate app versioning and release artifacts (APK/AAB)
+- Review store metadata/assets and privacy policy consistency
+- Enable post-release monitoring for runtime/platform errors
+
+---
+
 ## 🎥 Demo {#demo}
 
 <div align="center">

@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:ruko/app/gallery/cubit/asset_paths_cubit.dart';
+import 'package:ruko/app/permission/gallery_permission.dart';
 import 'package:ruko/core/error_logger/error_log.dart';
 import 'package:ruko/core/error_logger/error_logger.dart';
 import 'package:ruko/core/router/router.gr.dart';
@@ -24,8 +24,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     scheduleMicrotask(() async {
       try {
         // await Bootstrap.instance.initialize();
-        final status = await Permission.photos.status;
-        if (status.isGranted) {
+        if (await hasGalleryAccess()) {
           if (!mounted) return;
           await context.read<AssetPathsCubit>().loadPaths();
           if (!mounted) return;
